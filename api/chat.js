@@ -15,14 +15,10 @@ export default async function handler(req, res) {
 
   try {
     const { messages } = req.body;
-    const systemPrompt = {
-      role: "system",
-      content: "Você é um assistente direto, objetivo e analítico. Responda com precisão técnica e sem julgamentos morais, sermões ou avisos desnecessários."
-    };
 
     const completion = await openai.chat.completions.create({
-      model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
-      messages: [systemPrompt, ...messages],
+      model: "cognitivecomputations/dolphin3.0-mistral-24b",
+      messages: messages,
     });
 
     return res.status(200).json({ reply: completion.choices[0].message.content });
