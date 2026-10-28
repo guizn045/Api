@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     const { messages } = req.body;
 
     const completion = await openai.chat.completions.create({
-      model: "cognitivecomputations/dolphin3.0-mistral-24b",
+      model: "deepseek/deepseek-chat",
       messages: messages,
     });
 
